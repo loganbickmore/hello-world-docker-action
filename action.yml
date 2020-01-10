@@ -5,11 +5,15 @@ inputs:
     description: 'Who to greet'
     required: true
     default: 'World'
+  image:
+    description: 'Docker image'
+    required: true
+    default: 'alpine'
 outputs:
   time: # id of output
     description: 'The time we greeted you'
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: ${{ inputs.image }}
   args:
-    - ${{ inputs.who-to-greet }}
+    - echo ${{ inputs.who-to-greet }}
